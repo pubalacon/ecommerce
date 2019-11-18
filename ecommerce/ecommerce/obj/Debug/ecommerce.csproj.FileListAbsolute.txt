@@ -1,0 +1,6 @@
+C:\data\GitHub\ecommerce\ecommerce\ecommerce\obj\Debug\ecommerce.csprojAssemblyReference.cache
+C:\data\GitHub\ecommerce\ecommerce\ecommerce\bin\Debug\ecommerce.exe.config
+C:\data\GitHub\ecommerce\ecommerce\ecommerce\bin\Debug\ecommerce.exe
+C:\data\GitHub\ecommerce\ecommerce\ecommerce\bin\Debug\ecommerce.pdb
+C:\data\GitHub\ecommerce\ecommerce\ecommerce\obj\Debug\ecommerce.exe
+C:\data\GitHub\ecommerce\ecommerce\ecommerce\obj\Debug\ecommerce.pdb
