@@ -50,6 +50,7 @@
     <Compile Include="Order.cs" />
     <Compile Include="Central.cs" />
     <Compile Include="Session.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />

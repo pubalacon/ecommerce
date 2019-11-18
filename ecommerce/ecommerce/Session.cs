@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce
 {
-    class Session
+    public class Session
     {
         public Central Centrale { get; set; }
         public User User { get; set; }

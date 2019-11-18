@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce
 {
-    class Comment
+    public class Comment
     {
         public string Text { get; set; }
         public Client Author { get; set; }

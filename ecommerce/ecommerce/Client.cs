@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce
 {
-    class Client : User
+    public class Client : User
     {
         public Basket Panier { get; set; }
 
@@ -16,14 +16,26 @@ namespace ecommerce
         }
         public void CommanderPanier()
         {
-            foreach(KeyValuePair<Product,int> articleQte in Panier.ArticlesQte)
-            {
-                articleQte.Key.Vendor.AddToBonus(this, articleQte.Key.Price * articleQte.Value);
-                articleQte.Key.Stock -= articleQte.Value;
-            }
             // envoyer les commandes aux vendeurs
             // compter les achats pour les bons
-            // vider le panier
+            // vider le panier            
+            
+            foreach(KeyValuePair<Product,int> articleQte in Panier.ArticlesQte)
+            {
+                //articleQte.Key.Vendor.AddToBonus(this, articleQte.Key.Price * articleQte.Value);
+                if (articleQte.Key.Stock>= articleQte.Value)
+                {
+                    articleQte.Key.Stock -= articleQte.Value;
+                } 
+                else
+                {
+                    Console.WriteLine(articleQte.Key.Name + " is out of stock, you ordered " + articleQte.Value + " and there are only "+ articleQte.Key.Stock + " left");
+                }
+                
+            }
+
+            Panier.ArticlesQte.Clear();
+
         }
         public void Comment(Product article,string text)
         {

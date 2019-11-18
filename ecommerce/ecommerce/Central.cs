@@ -7,31 +7,40 @@ using System.Linq;
 
 namespace ecommerce
 {
-    class Central
+    public class Central
     {
         public List<Client> Clients { get; set; }
         public List<Vendor> Vendors { get; set; }
         public List<Product> Articles { get; set; }
+        public List<User> Users { get; set; }
 
         public Central()
         {
             Clients = new List<Client> { };
             Vendors = new List<Vendor> { };
             Articles = new List<Product> { };
+            Users = new List<User> { };
         }
 
         // creation de compte
-        public Client               CreateClientAccount(string nom, string mail, string password)
+        public Client CreateClientAccount(string nom, string mail, string password)
         {
             throw new NotImplementedException();
         }
-        public Vendor               CreateVendorAccount(string nom, string mail, string password)
+        public Vendor CreateVendorAccount(string nom, string mail, string password)
         {
             throw new NotImplementedException();
         }
-        public User                 Login(string mail, string password)
+        public User Login(string mail, string password)
         {
-            User LogginIn = Clients.Where((user) => user.Mail.Equals(null)).First(); // renvoie le 1er element de la liste (on ne peut pas caster une list en user)
+            User LogginIn = null;
+
+            List<User> tmp = Users.Where((user) => user.Mail.Equals(mail)).ToList();
+
+            if (tmp.Count() > 0)
+            {
+                LogginIn = tmp.First();
+            }
             
             if (LogginIn == null)
             {
@@ -44,7 +53,7 @@ namespace ecommerce
             }
             return LogginIn;
         }
-        public void                 AddArticle(Product article)
+        public void AddArticle(Product article)
         {
             // add article to list
             if (article == null)
@@ -53,7 +62,7 @@ namespace ecommerce
             }
             Articles.Add(article);
         }
-        public void                 DeactivateArticle(Product article)
+        public void DeactivateArticle(Product article)
         {
             // remove article from list
             if (article == null)
@@ -62,7 +71,7 @@ namespace ecommerce
             }
             article.Active = false; ;
         }
-        public void                 UpdateStockArticle(Product article, int stock)
+        public void UpdateStockArticle(Product article, int stock)
         {
             // Modify product or deactivate and add new product ?
             // add article to list
@@ -72,19 +81,19 @@ namespace ecommerce
             }
             article.Stock = stock;
         }
-        public List<Product>        SearchArticles (string searchInput)
+        public List<Product> SearchArticles (string searchInput)
         {
             List<Product> SearchResults = new List<Product>();
             foreach(Product article in Articles)
             {
-                if (article.Active &&  article.Name.Contains(searchInput))
+                if (article.Active &&  (article.Name.Contains(searchInput) || article.Description.Contains(searchInput)))
                 {
                     SearchResults.Add(article);
                 }
             }
             return SearchResults;
         }
-        public List<Product>        SearchArticles(string searchInput, double minPrice, double maxPrice)
+        public List<Product> SearchArticles(string searchInput, double minPrice, double maxPrice)
         {
             List<Product> SearchResults = SearchArticles(searchInput);
 
@@ -93,7 +102,7 @@ namespace ecommerce
             SearchResults.Where((x) => x.Price >= minPrice && x.Price <= maxPrice);
             return SearchResults;
         }
-        public bool                 ConfirmAccount(User user, string confirmationString)
+        public bool ConfirmAccount(User user, string confirmationString)
         {
             throw new NotImplementedException();
         }

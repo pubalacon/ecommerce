@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce
 {
-    class Basket
+    public class Basket
     {
         public Client Client { get; set; }
         public List<KeyValuePair<Product, int>> ArticlesQte { get; set; }
@@ -16,9 +16,9 @@ namespace ecommerce
             Client = client;
             ArticlesQte = new List<KeyValuePair<Product, int>> { };
         }
-        public void AddArticleToPanier(Product article, int Quantity)
+        public void AddArticleToPanier(Product article, int quantity)
         {
-            throw new NotImplementedException();
+            ArticlesQte.Add(new KeyValuePair<Product, int>(article, quantity));
         }
         public void ModifyQuantity(Product article, int newQuantity)
         {

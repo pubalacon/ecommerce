@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce
 {
-    class Vendor : User
+    public class Vendor : User
     {
         public List<Product> Articles { get; set; } // catalogue du vendeur
         public List<Claim> Reclamations { get; set; }
@@ -20,23 +20,26 @@ namespace ecommerce
         }
         public void AddArticle(Product article, Central centrale)
         {
-            throw new NotImplementedException();
+            Articles.Add(article);
+            centrale.AddArticle(article);
         }
-        public void AddStockToArticle(Product article, int stock, Central centrale)
+        public void AddStockToArticle(Product article, int stock)
         {
-            throw new NotImplementedException();
+            article.Stock += stock;
         }
-        public void DeactivateArticle(Product article, Central centrale)
+        public void DeactivateArticle(Product article)
         {
-            throw new NotImplementedException();
+            article.Active = false;
         }
         public void GererCommentaires()
         {
             throw new NotImplementedException();
+            // utiliser liste.Remove();
         }
         public void GererReclamations()
         {
             throw new NotImplementedException();
+            // utiliser liste.Remove();
         }
         public void RecompenseFidelite(Client client)
         {
@@ -44,7 +47,7 @@ namespace ecommerce
         }
         public void AddToBonus(Client client, double money)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

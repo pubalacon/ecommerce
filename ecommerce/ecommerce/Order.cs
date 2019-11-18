@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce
 {
-    class Order
+    public class Order
     {
         public Client Client { get; set; }
         public Vendor Vendor { get; set; }
