@@ -1,0 +1,37 @@
+
+CLIENT REGISTRATION
+
+Client
+
+void register()
+void confirm(email, token)
+Client signIn(string login, string password)
+
+System
+
+bool checkUniqueLogin(string login, string password)
+void sendConfirmation(email, token)
+Client validateRegistration(email, token)
+
+
+CLIENT USE BASKET
+
+Client
+
+Basket initBasket(Client owner)
+void addProduct(Basket panier, Product article, int quantity)
+void updateProduct(Basket panier, Product article, int quantity)
+void removeProduct(Basket panier, Product article, int quantity)
+bool enterCouponCode(Basket panier)
+void checkOut()
+
+System
+
+double calculateTotal(Basket panier)
+
+
+VENDOR MANAGE CATALOG
+
+Product addProduct(Person vendor, Product article)
+Product updateProduct(Person vendor, Product article)
+Product removeProduct(Person vendor, Product article)

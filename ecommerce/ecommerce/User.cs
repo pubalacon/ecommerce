@@ -8,21 +8,21 @@ namespace ecommerce
 {
     public class User
     { 
-        public string Nom { get; set; }
+        public string Name { get; set; }
         public string Password { get; set; }
         public string Mail { get; set; }
-        public bool Valide { get; set; }
+        public bool Confirmed { get; set; }
         public void ConfirmAccount(string confirmationString)
         {
             throw new NotImplementedException();
         }
 
-        public User(string nom, string mail, string password)
+        public User(string name, string mail, string password)
         {
-            Nom = nom;
+            Name = name;
             Mail = mail;
             Password = password;
-            Valide = true;
+            Confirmed = true;
         }
     }
 }

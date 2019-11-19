@@ -9,13 +9,13 @@ namespace ecommerce
     public class Tools
     {
 
-        public static User LoginRetry(string mail, string passwd, Central centrale)
+        public static User LoginRetry(string mail, string password, Central centrale)
         {
             User user = null;
 
             try
             {
-                user = centrale.Login(mail, passwd);
+                user = centrale.Login(mail, password);
             }
             catch (ArgumentException e)
             {
@@ -23,8 +23,8 @@ namespace ecommerce
                 Console.Write("Enter email: ");
                 mail = Console.ReadLine();
                 Console.Write("Enter password: ");
-                passwd = Console.ReadLine();
-                LoginRetry(mail, passwd, centrale);
+                password = Console.ReadLine();
+                user = LoginRetry(mail, password, centrale);
             }
 
             return user;

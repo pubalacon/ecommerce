@@ -12,7 +12,7 @@ namespace ecommerce
         public List<Claim> Reclamations { get; set; }
         public List<KeyValuePair<Client, double>> Fidelite { get; set; } // CA par client
 
-        public Vendor(string nom, string mail, string password) : base(nom, mail, password)
+        public Vendor(string name, string mail, string password) : base(name, mail, password)
         {
             Articles = new List<Product> { };
             Reclamations = new List<Claim> { };
@@ -20,8 +20,8 @@ namespace ecommerce
         }
         public void AddArticle(Product article, Central centrale)
         {
-            Articles.Add(article);
-            centrale.AddArticle(article);
+            Articles.Add(article); // ajouter au catalogue
+            centrale.AddArticle(article); // ajouter a la liste de recherche
         }
         public void AddStockToArticle(Product article, int stock)
         {

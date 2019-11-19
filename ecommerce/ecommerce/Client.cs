@@ -10,7 +10,7 @@ namespace ecommerce
     {
         public Basket Panier { get; set; }
 
-        public Client(string nom, string mail, string password) : base(nom, mail, password)
+        public Client(string name, string mail, string password) : base(name, mail, password)
         {
             Panier = new Basket(this);
         }

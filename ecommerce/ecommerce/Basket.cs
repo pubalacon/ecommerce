@@ -22,11 +22,20 @@ namespace ecommerce
         }
         public void ModifyQuantity(Product article, int newQuantity)
         {
-            throw new NotImplementedException();
+            // KeyValuePair is immutable,we need to recreate a new one (and therefore delete the old one)
+            List<KeyValuePair<Product, int>> tmp = ArticlesQte.Where(x => x.Key == article).ToList();
+            if (tmp != null)
+            {
+                foreach (KeyValuePair<Product, int> item in tmp)
+                {
+                    RemoveArticleFromPanier(item.Key, item.Value);
+                }
+            }
+            AddArticleToPanier(article, newQuantity);
         }
-        public void RemoveArticleFromPanier(Product article)
+        public void RemoveArticleFromPanier(Product article, int quantity)
         {
-            throw new NotImplementedException();
+            ArticlesQte.Remove(new KeyValuePair<Product, int>(article,quantity));
         }
 
     }

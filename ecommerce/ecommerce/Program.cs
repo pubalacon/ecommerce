@@ -34,13 +34,14 @@ namespace ecommerce
 
             client2.CommanderPanier();
 
-            foreach (Product article in centrale.SearchArticles("velo"))
+            // foreach (Product article in centrale.SearchArticles("velo")) // attention, si liste nulle ?
+            foreach (Product article in centrale.SearchArticles("velo") ?? new List<Product>())
             {
                 Console.WriteLine(article.Name);
                 Console.WriteLine(article.Description);
                 Console.WriteLine(article.Price);
                 Console.WriteLine(article.Stock);
-                Console.WriteLine(article.Vendor.Nom);
+                Console.WriteLine(article.Vendor.Name);
             }
 
             Console.ReadKey();
@@ -49,10 +50,10 @@ namespace ecommerce
             Console.Write("Enter email address: ");
             string mail = Console.ReadLine();
             Console.Write("Enter password: ");
-            string passwd = Console.ReadLine();
+            string password = Console.ReadLine();
 
-            User LogClient = Tools.LoginRetry(mail, passwd, centrale);
-            Console.WriteLine($"Bonjour {LogClient.Nom} !");
+            User LogClient = Tools.LoginRetry(mail, password, centrale);
+            Console.WriteLine($"Bonjour {LogClient.Name} !");
             Console.ReadKey();
             /**/
         }

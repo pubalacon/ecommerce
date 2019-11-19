@@ -17,14 +17,14 @@ namespace ecommerce
         public List<KeyValuePair<Client, int>> Reservations { get; set; }
         public Vendor Vendor { get; set; }
 
-        public Product(string nom, string description, double price, Vendor vendeur) 
+        public Product(string name, string description, double price, Vendor vendor) 
         { 
-            Name = nom;
+            Name = name;
             Description = description;
             Price = price;
             Stock = 0;
             Active = true;
-            Vendor = vendeur;
+            Vendor = vendor;
             Comments = new List<Comment> { };
             Reservations = new List<KeyValuePair<Client, int>> { };
         }
