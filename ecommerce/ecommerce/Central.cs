@@ -23,13 +23,38 @@ namespace ecommerce
         }
 
         // creation de compte
-        public Client CreateClientAccount(string nom, string mail, string password)
+        public User InputUserAccount()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Create a new person:");
+            Console.Write("Enter type (C)lient (V)endor (Q)uit: ");
+            string type = Console.ReadLine();
+            if (type.ToUpper() == "Q") return null;
+
+            Console.Write("Enter name: ");
+            string name = Console.ReadLine();
+            Console.Write("Enter email address: ");
+            string mail = Console.ReadLine();
+            Console.Write("Enter password: ");
+            string password = Console.ReadLine();
+
+            if (type=="C")
+            {
+                return CreateClientAccount(name, mail, password);
+            }
+            else if (type=="V")
+            {
+                return CreateVendorAccount(name, mail, password);
+            }
+
+            return null;
         }
-        public Vendor CreateVendorAccount(string nom, string mail, string password)
+        public Client CreateClientAccount(string name, string mail, string password)
         {
-            throw new NotImplementedException();
+            return new Client(name, mail, password);
+        }
+        public Vendor CreateVendorAccount(string name, string mail, string password)
+        {
+            return new Vendor(name, mail, password);
         }
         public User Login(string mail, string password)
         {

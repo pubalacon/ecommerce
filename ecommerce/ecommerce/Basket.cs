@@ -18,7 +18,15 @@ namespace ecommerce
         }
         public void AddArticleToPanier(Product article, int quantity)
         {
-            ArticlesQte.Add(new KeyValuePair<Product, int>(article, quantity));
+            if (article.Stock >= quantity)
+            {
+                ArticlesQte.Add(new KeyValuePair<Product, int>(article, quantity));
+            }
+            else
+            {
+                Console.WriteLine(article.Name + " is out of stock, you ordered " + quantity + " and there are only " + article.Stock + " left");
+            }
+
         }
         public void ModifyQuantity(Product article, int newQuantity)
         {
@@ -31,6 +39,7 @@ namespace ecommerce
                     RemoveArticleFromPanier(item.Key, item.Value);
                 }
             }
+            
             AddArticleToPanier(article, newQuantity);
         }
         public void RemoveArticleFromPanier(Product article, int quantity)
